@@ -38,18 +38,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item!!.itemId) {
-            R.id.nav_search-> {
-                LocalRepo.getPopMovies()?.onError {
-                    Log.e("MainActivity","getPopMovies -> $it")
-                }?.observer {
-                    Log.v("MainActivity","getPopMovies -> $it")
-                }
-                LocalRepo.getTopMovies()?.onError {
-                    Log.e("MainActivity","getTopMovies -> $it")
-                }?.observer {
-                    Log.v("MainActivity","getTopMovies -> $it")
-                }
-            }
             R.id.nav_filter-> {
                 showDialogChose()
             }

@@ -2,7 +2,7 @@ package com.simxid.data.local
 
 import android.content.Context
 import android.util.Log
-import com.simxid.data.remote.models.MyObjectBox
+import com.simxid.data.MyObjectBox
 import io.objectbox.BoxStore
 
 /**

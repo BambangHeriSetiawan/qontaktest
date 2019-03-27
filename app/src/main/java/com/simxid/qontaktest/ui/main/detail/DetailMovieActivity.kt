@@ -9,9 +9,12 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import com.simxid.data.local.FavoriteItem
+import com.simxid.data.local.LocalRepo
 import com.simxid.data.remote.models.ResultsItem
 import com.simxid.qontaktest.R
 import com.simxid.qontaktest.databinding.DetailMovieActivityBinding
+import com.simxid.qontaktest.ui.fav.FavoriteActivity
 
 
 class DetailMovieActivity : AppCompatActivity() {
@@ -50,7 +53,27 @@ class DetailMovieActivity : AppCompatActivity() {
             android.R.id.home -> {
                 onBackPressed()
             }
-            else -> {
+            R.id.nav_un_fav -> {
+                var item = FavoriteItem(
+                    vm.movie.value?.id!!.toLong(),
+                    vm.movie.value?.overview,
+                    vm.movie.value?.originalLanguage,
+                    vm.movie.value?.originalTitle,
+                    vm.movie.value?.video,
+                    vm.movie.value?.title,
+                    vm.movie.value?.posterPath,
+                    vm.movie.value?.backdropPath,
+                    vm.movie.value?.releaseDate,
+                    vm.movie.value?.popularity,
+                    vm.movie.value?.voteAverage,
+                    vm.movie.value?.idMovie,
+                    vm.movie.value?.adult,
+                    vm.movie.value?.voteCount
+
+                )
+                LocalRepo.addFav(item)?.subscribe {
+                    FavoriteActivity.start(this)
+                }
             }
         }
         return super.onOptionsItemSelected(item)
