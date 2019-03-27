@@ -4,9 +4,12 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import com.simxid.data.remote.models.ResultsItem
 import com.simxid.qontaktest.R
 import com.simxid.qontaktest.databinding.DetailMovieActivityBinding
 
@@ -22,7 +25,14 @@ class DetailMovieActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         binding.detailMovieVm = vm
         setSupportActionBar(binding.toolbar)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        if (intent.hasExtra(KEY_MOVIE)) vm.movie.postValue(intent.getParcelableExtra(KEY_MOVIE))
+
+        vm.movie.observe(this, Observer {
+            Log.v("DetailMovieActivity","onCreate -> $it")
+            supportActionBar?.title = it.originalTitle
+            vm.title.set(it.getImagePoster())
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -43,7 +53,7 @@ class DetailMovieActivity : AppCompatActivity() {
     }
     companion object {
        private const val KEY_MOVIE = "movie"
-        fun start(context: Context, movie:String){
+        fun start(context: Context, movie:ResultsItem){
             var intent = Intent(context, DetailMovieActivity::class.java)
             intent.putExtra(KEY_MOVIE,movie)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP

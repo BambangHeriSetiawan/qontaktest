@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:bind="http://schemas.android.com/tools">
     <data>
         <variable name="itemMovieVm" type="com.simxid.qontaktest.ui.main.adapter.ItemMovieViewModel"/>
     </data>
@@ -13,20 +14,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <ImageView
+                bind:image_url="@{itemMovieVm.image}"
                 android:id="@+id/imgMovie"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/ic_launcher"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"/>
-        <RatingBar
-
-                android:layout_above="@id/tvTitle"
-                android:stepSize="0.5"
-                android:rating="3.5"
-                android:layout_width="wrap_content"
-                android:layout_height="50dp"/>
         <TextView
-                android:text="@string/app_name"
+                android:text="@{itemMovieVm.title}"
                 android:padding="5dp"
                 android:layout_below="@id/imgMovie"
                 style="@style/Base.TextAppearance.AppCompat.Title"
@@ -34,7 +29,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
         <TextView
-                android:text="@string/app_name"
+                android:maxLines="2"
+                android:text="@{itemMovieVm.desc}"
                 android:padding="5dp"
                 android:layout_below="@id/tvTitle"
                 style="@style/Base.TextAppearance.AppCompat.Subhead"

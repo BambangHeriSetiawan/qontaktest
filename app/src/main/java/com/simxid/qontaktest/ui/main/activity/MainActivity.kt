@@ -1,13 +1,18 @@
 package com.simxid.qontaktest.ui.main.activity
 
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
+import com.simxid.data.Const
 import com.simxid.qontaktest.R
 import com.simxid.qontaktest.databinding.ActivityMainBinding
+import com.simxid.qontaktest.helper.DialogHelper
 import com.simxid.qontaktest.helper.Helper
+import com.simxid.qontaktest.ui.fav.FavoriteActivity
 import com.simxid.qontaktest.ui.main.fragment.MainFragment
 
 class MainActivity : AppCompatActivity() {
@@ -22,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         binding.mainVm = vm
         setSupportActionBar(binding.toolbar)
         supportActionBar?.title = resources.getString(R.string.app_name)
-        loadMainFragment(Helper.TYPE_POP,Helper.TYPE_POP)
+        loadMainFragment(Const.type_top,Const.type_top)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -35,15 +40,36 @@ class MainActivity : AppCompatActivity() {
             R.id.nav_search-> {
             }
             R.id.nav_filter-> {
+                showDialogChose()
             }
             R.id.nav_fav-> {
+                FavoriteActivity.start(this@MainActivity)
             }
         }
         return super.onOptionsItemSelected(item)
     }
 
+    private fun showDialogChose() {
+        DialogHelper.createDialogSingleChoice(this@MainActivity, listenerDialog).show()
+    }
+
+    private val listenerDialog = DialogInterface.OnClickListener { dialog, which ->
+        run {
+
+            when (which) {
+                0 -> {
+                    loadMainFragment(Const.type_pop, Const.type_pop)
+                }
+                1 -> {
+                    loadMainFragment(Const.type_top, Const.type_top)
+                }
+            }
+            dialog.dismiss()
+        }
+    }
+
+
     private fun loadMainFragment(type:String, tag:String){
-        supportFragmentManager.beginTransaction().replace(R.id.main_container,
-            MainFragment.instance(type),tag)
+        supportFragmentManager.beginTransaction().replace(R.id.main_container, MainFragment.instance(type)).commit()
     }
 }

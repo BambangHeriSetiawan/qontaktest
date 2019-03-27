@@ -1,9 +1,12 @@
 package com.simxid.data.remote.models
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import com.simxid.data.BuildConfig
+import kotlinx.android.parcel.Parcelize
 
-
+@Parcelize
 data class ResultsItem(
 
 	@field:SerializedName("overview")
@@ -47,4 +50,11 @@ data class ResultsItem(
 
 	@field:SerializedName("vote_count")
 	val voteCount: Int? = null
-)
+) : Parcelable {
+	fun getImagePoster():String {
+		return BuildConfig.PATH_IMAGE + posterPath
+	}
+	fun getImageBackdrop():String {
+		return BuildConfig.PATH_IMAGE + backdropPath
+	}
+}

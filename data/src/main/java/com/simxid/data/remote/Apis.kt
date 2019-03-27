@@ -4,6 +4,7 @@ import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.simxid.data.Const
+import com.simxid.data.remote.models.ResponseMovies
 import io.reactivex.Observable
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -26,7 +27,7 @@ interface Apis {
         @Query("api_key") apiKey: String,
         @Query("page") page: Int,
         @Query("language") language: String
-    ):Observable<String>
+    ):Observable<ResponseMovies>
 
     @Headers("Accept: application/json", "Content-type: application/json")
     @GET(Const.url_top_rated_movie)
@@ -34,7 +35,7 @@ interface Apis {
         @Query("api_key") apiKey: String,
         @Query("page") page: Int,
         @Query("language") language: String
-    ):Observable<String>
+    ):Observable<ResponseMovies>
 
 
     /*#########################*/

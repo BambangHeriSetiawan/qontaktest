@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">QontakTest</string>
+    <string name="app_name">Qontak Test</string>
     <string name="favorite">Favorit</string>
     <string name="filter">Filter</string>
     <string name="search">Search</string>

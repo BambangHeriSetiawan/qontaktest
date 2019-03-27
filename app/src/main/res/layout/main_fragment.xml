@@ -5,6 +5,7 @@
         <variable name="mainFragVm" type="com.simxid.qontaktest.ui.main.fragment.MainFragmentViewModel"/>
     </data>
     <RelativeLayout
+            android:id="@+id/root_main_fragment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:context=".ui.main.fragment.MainFragment">
