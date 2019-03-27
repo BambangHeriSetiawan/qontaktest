@@ -1,0 +1,39 @@
+ext {
+    versions = [
+            compileSdkVersion : 28,
+            minSdkVersion     : 19,
+            targetSdkVersion  : 28,
+            rxAndroidVer      : '2.0.1',
+            rxJavaVer         : '2.1.9',
+            rxJavaAdapterVer  : '2.4.0',
+            okhttpVer         : '3.11.0',
+            gsonVer           : '2.8.5',
+            retroVer          : '2.4.0',
+            glideVer          : '4.5.0'
+    ]
+    libraries = [
+            //Netrork
+            rxandroid               :"io.reactivex.rxjava2:rxandroid:$versions.rxAndroidVer",
+            rxjava2                 :"io.reactivex.rxjava2:rxjava:$versions.rxJavaVer",
+            okhttp                  :"com.squareup.okhttp3:okhttp:$versions.okhttpVer",
+            interceptor             :"com.squareup.okhttp3:logging-interceptor:$versions.okhttpVer",
+            gson                    :"com.google.code.gson:gson:$versions.gsonVer",
+            retrofit2               :"com.squareup.retrofit2:retrofit:$versions.retroVer",
+            adapterRxjava2          :"com.squareup.retrofit2:adapter-rxjava2:$versions.retroVer",
+            converterGson           :"com.squareup.retrofit2:converter-gson:$versions.retroVer",
+            retrofit2Rxjava2Adapter :"com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0",
+
+            //Glide
+            glide                   :"com.github.bumptech.glide:glide:$versions.glideVer",
+            glideCompiler           :"com.github.bumptech.glide:compiler:$versions.glideVer",
+
+
+            // ViewModel and LiveData
+            lifecycleExtensions    :"android.arch.lifecycle:extensions:$versions.lifecycleVer",
+            // alternatively, just ViewModel
+            lifecycleViewmodel     :"android.arch.lifecycle:viewmodel:$versions.lifecycleVer",
+            // alternatively, just LiveData
+            lifecycleLivedata      :"android.arch.lifecycle:livedata:$versions.lifecycleVer",
+            annotationLifecycleCompiler     :"android.arch.lifecycle:compiler:$versions.lifecycleVer",
+    ]
+}
