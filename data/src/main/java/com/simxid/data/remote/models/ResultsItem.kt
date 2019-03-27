@@ -12,6 +12,7 @@ import kotlinx.android.parcel.Parcelize
 @Entity
 data class ResultsItem(
 
+	@field:SerializedName("idL")
     @Id var id: Long = 0,
 
     @field:SerializedName("overview")

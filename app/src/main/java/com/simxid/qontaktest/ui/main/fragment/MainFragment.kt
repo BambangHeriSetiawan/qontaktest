@@ -2,7 +2,6 @@ package com.simxid.qontaktest.ui.main.fragment
 
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +15,7 @@ import com.simxid.data.remote.models.ResultsItem
 
 import com.simxid.qontaktest.R
 import com.simxid.qontaktest.databinding.MainFragmentBinding
+import com.simxid.qontaktest.helper.ConnectionLiveData
 import com.simxid.qontaktest.ui.main.adapter.AdapterMovie
 import com.simxid.qontaktest.ui.main.detail.DetailMovieActivity
 import io.reactivex.disposables.CompositeDisposable
@@ -30,10 +30,16 @@ class MainFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.mainFragVm = vm
         adapterMovie = AdapterMovie(listOf(), listener)
-        vm.getMovie(arguments!!.getString(KEY_TYPE)!!,1)
+        checkConnection()
         return binding.root
     }
 
+    fun checkConnection(){
+        ConnectionLiveData(this@MainFragment.context!!).observe(this, Observer {
+            if (it == false) vm.getLocalData(arguments!!.getString(KEY_TYPE)!!)
+            else vm.getRemoteData(arguments!!.getString(KEY_TYPE)!!,1)
+        })
+    }
     private val listener = object : AdapterMovie.OnAdapterMovieListener {
         override fun onAdapterMovieClicked(movie: ResultsItem) {
             DetailMovieActivity.start(this@MainFragment.context!!, movie)
@@ -49,6 +55,7 @@ class MainFragment : Fragment() {
         vm.movies.observe(this, Observer {
             adapterMovie.update(it)
         })
+
         binding.rcvMovie.let {
             it.hasFixedSize()
             it.adapter = adapterMovie
@@ -61,7 +68,7 @@ class MainFragment : Fragment() {
         Snackbar.make(binding.rootMainFragment, it!!,Snackbar.LENGTH_INDEFINITE)
             .setActionTextColor(resources.getColor(R.color.abc_primary_text_disable_only_material_dark))
             .setAction("OK") {
-                if (!arguments!!.isEmpty)vm.getMovie(arguments!!.getString(KEY_TYPE)!!,1)
+                checkConnection()
             }
     }
 

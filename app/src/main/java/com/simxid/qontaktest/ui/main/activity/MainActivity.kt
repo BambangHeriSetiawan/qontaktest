@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
 import com.simxid.data.Const
+import com.simxid.data.local.LocalRepo
 import com.simxid.qontaktest.R
 import com.simxid.qontaktest.databinding.ActivityMainBinding
 import com.simxid.qontaktest.helper.DialogHelper
@@ -38,10 +39,21 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item!!.itemId) {
             R.id.nav_search-> {
+                LocalRepo.getPopMovies()?.onError {
+                    Log.e("MainActivity","getPopMovies -> $it")
+                }?.observer {
+                    Log.v("MainActivity","getPopMovies -> $it")
+                }
+                LocalRepo.getTopMovies()?.onError {
+                    Log.e("MainActivity","getTopMovies -> $it")
+                }?.observer {
+                    Log.v("MainActivity","getTopMovies -> $it")
+                }
             }
             R.id.nav_filter-> {
                 showDialogChose()
             }
+
             R.id.nav_fav-> {
                 FavoriteActivity.start(this@MainActivity)
             }

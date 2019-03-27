@@ -12,6 +12,11 @@ class App: Application() {
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)
         MultiDex.install(this@App)
+
+    }
+
+    override fun onCreate() {
+        super.onCreate()
         ObjectBox.init(this@App.applicationContext)
     }
 }

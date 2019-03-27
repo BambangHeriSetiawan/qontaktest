@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools">
+        xmlns:tools="http://schemas.android.com/tools" xmlns:bind="http://schemas.android.com/apk/res-auto">
     <data>
         <variable name="mainFragVm" type="com.simxid.qontaktest.ui.main.fragment.MainFragmentViewModel"/>
+        <import type="android.view.View"/>
     </data>
     <RelativeLayout
             android:id="@+id/root_main_fragment"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     tools:context=".ui.main.fragment.MainFragment">
+        <ProgressBar
+                bind:visibility="@{mainFragVm.isLoading() ? View.VISIBLE:View.GONE}"
+                android:layout_centerInParent="true"
+                android:layout_width="50dp"
+                android:layout_height="50dp"/>
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcvMovie"
                 android:layout_width="match_parent"
