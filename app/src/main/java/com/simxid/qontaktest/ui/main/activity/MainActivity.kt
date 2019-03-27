@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         binding.mainVm = vm
         setSupportActionBar(binding.toolbar)
         supportActionBar?.title = resources.getString(R.string.app_name)
-        loadMainFragment(Const.type_top,Const.type_top)
+        loadMainFragment(Const.type_pop,Const.type_pop)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

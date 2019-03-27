@@ -51,7 +51,7 @@ data class ResultsItem(
 	val voteAverage: Double? = null,
 
     @field:SerializedName("id")
-    val idMoive: Int? = null,
+    val idMovie: Int? = null,
 
 
     @field:SerializedName("adult")

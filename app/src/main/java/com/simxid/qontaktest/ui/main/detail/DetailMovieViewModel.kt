@@ -21,4 +21,6 @@ class DetailMovieViewModel(): BaseObservable() {
     @Bindable var image = ObservableField<String>()
     @Bindable var title = ObservableField<String>()
     @Bindable var desc = ObservableField<String>()
+    @Bindable var releaseDate = ObservableField<String>()
+    @Bindable var rate = ObservableField<String>()
 }

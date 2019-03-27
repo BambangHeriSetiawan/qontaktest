@@ -31,7 +31,11 @@ class DetailMovieActivity : AppCompatActivity() {
         vm.movie.observe(this, Observer {
             Log.v("DetailMovieActivity","onCreate -> $it")
             supportActionBar?.title = it.originalTitle
-            vm.title.set(it.getImagePoster())
+            vm.title.set(it.title)
+            vm.desc.set(it.overview)
+            vm.image.set(it.getImageBackdrop())
+            vm.releaseDate.set("Release date ${it.releaseDate}")
+            vm.rate.set(it.voteAverage.toString())
         })
     }
 
