@@ -6,6 +6,7 @@ import androidx.databinding.Bindable
 import androidx.databinding.library.baseAdapters.BR
 import androidx.lifecycle.MutableLiveData
 import com.simxid.data.Const
+import com.simxid.data.local.LocalRepo
 import com.simxid.data.remote.Repo
 import com.simxid.data.remote.models.ResultsItem
 import io.reactivex.disposables.CompositeDisposable
@@ -42,16 +43,20 @@ class MainFragmentViewModel(var disposable: CompositeDisposable): BaseObservable
     @SuppressLint("CheckResult")
     private fun getTopMovie(page: Int) {
         Repo.topRate(page)?.subscribe({
-            if (it.results != null) movies.postValue(it.results)
-                else errorMsg.postValue(it.statusMessage)
+            if (it.results != null) {
+                movies.postValue(it.results)
+                LocalRepo.storeLocalTop(it.results!!)
+            } else errorMsg.postValue(it.statusMessage)
         },{ errorMsg.postValue(it.message) })
     }
 
     @SuppressLint("CheckResult")
     private fun getPopMoview(page: Int) {
         Repo.popular(page)?.subscribe({
-            if (it.results != null) movies.postValue(it.results)
-                else errorMsg.postValue(it.statusMessage)
+            if (it.results != null) {
+                movies.postValue(it.results)
+                LocalRepo.storeLocalPop(it.results!!)
+            } else errorMsg.postValue(it.statusMessage)
         },{ errorMsg.postValue(it.message) })
     }
     fun clear() {

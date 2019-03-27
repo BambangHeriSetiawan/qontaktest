@@ -1,0 +1,82 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:1420696014539329664",
+      "lastPropertyId": "14:1500600615542328195",
+      "name": "ResultsItem",
+      "properties": [
+        {
+          "id": "1:6751902613215979155",
+          "name": "id"
+        },
+        {
+          "id": "2:4331994576547908710",
+          "name": "overview"
+        },
+        {
+          "id": "3:4386545846119887045",
+          "name": "originalLanguage"
+        },
+        {
+          "id": "4:8347724679857947787",
+          "name": "originalTitle"
+        },
+        {
+          "id": "5:7859719488019891061",
+          "name": "video"
+        },
+        {
+          "id": "6:1168998131573375776",
+          "name": "title"
+        },
+        {
+          "id": "7:2719887446625831120",
+          "name": "posterPath"
+        },
+        {
+          "id": "8:8404713216094323436",
+          "name": "backdropPath"
+        },
+        {
+          "id": "9:4458524895655803565",
+          "name": "releaseDate"
+        },
+        {
+          "id": "10:3109633910774949522",
+          "name": "popularity"
+        },
+        {
+          "id": "11:3147265316406275623",
+          "name": "voteAverage"
+        },
+        {
+          "id": "12:5532675660818553721",
+          "name": "idMoive"
+        },
+        {
+          "id": "13:2185993170993118342",
+          "name": "adult"
+        },
+        {
+          "id": "14:1500600615542328195",
+          "name": "voteCount"
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "1:1420696014539329664",
+  "lastIndexId": "0:0",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 4,
+  "modelVersionParserMinimum": 4,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}

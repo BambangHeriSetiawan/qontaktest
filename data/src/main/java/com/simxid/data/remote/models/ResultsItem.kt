@@ -4,51 +4,59 @@ package com.simxid.data.remote.models
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import com.simxid.data.BuildConfig
+import io.objectbox.annotation.Entity
+import io.objectbox.annotation.Id
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
+@Entity
 data class ResultsItem(
 
-	@field:SerializedName("overview")
+    @Id var id: Long = 0,
+
+    @field:SerializedName("overview")
 	val overview: String? = null,
 
-	@field:SerializedName("original_language")
+    @field:SerializedName("original_language")
 	val originalLanguage: String? = null,
 
-	@field:SerializedName("original_title")
+    @field:SerializedName("original_title")
 	val originalTitle: String? = null,
 
-	@field:SerializedName("video")
+    @field:SerializedName("video")
 	val video: Boolean? = null,
 
-	@field:SerializedName("title")
+    @field:SerializedName("title")
 	val title: String? = null,
 
-	@field:SerializedName("genre_ids")
+/*
+    @field:SerializedName("genre_ids")
 	val genreIds: List<Int?>? = null,
+*/
 
-	@field:SerializedName("poster_path")
+    @field:SerializedName("poster_path")
 	val posterPath: String? = null,
 
-	@field:SerializedName("backdrop_path")
+    @field:SerializedName("backdrop_path")
 	val backdropPath: String? = null,
 
-	@field:SerializedName("release_date")
+    @field:SerializedName("release_date")
 	val releaseDate: String? = null,
 
-	@field:SerializedName("popularity")
+    @field:SerializedName("popularity")
 	val popularity: Double? = null,
 
-	@field:SerializedName("vote_average")
+    @field:SerializedName("vote_average")
 	val voteAverage: Double? = null,
 
-	@field:SerializedName("id")
-	val id: Int? = null,
+    @field:SerializedName("id")
+    val idMoive: Int? = null,
 
-	@field:SerializedName("adult")
+
+    @field:SerializedName("adult")
 	val adult: Boolean? = null,
 
-	@field:SerializedName("vote_count")
+    @field:SerializedName("vote_count")
 	val voteCount: Int? = null
 ) : Parcelable {
 	fun getImagePoster():String {
