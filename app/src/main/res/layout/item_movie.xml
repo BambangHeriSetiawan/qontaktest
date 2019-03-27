@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="itemMovieVm" type="com.simxid.qontaktest.ui.main.adapter.ItemMovieViewModel"/>
+    </data>
+    <androidx.cardview.widget.CardView
+            app:cardElevation="2dp"
+            android:layout_margin="5dp"
+            app:cardCornerRadius="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <ImageView
+                android:id="@+id/imgMovie"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/ic_launcher"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"/>
+        <RatingBar
+
+                android:layout_above="@id/tvTitle"
+                android:stepSize="0.5"
+                android:rating="3.5"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"/>
+        <TextView
+                android:text="@string/app_name"
+                android:padding="5dp"
+                android:layout_below="@id/imgMovie"
+                style="@style/Base.TextAppearance.AppCompat.Title"
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        <TextView
+                android:text="@string/app_name"
+                android:padding="5dp"
+                android:layout_below="@id/tvTitle"
+                style="@style/Base.TextAppearance.AppCompat.Subhead"
+                android:id="@+id/tvDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+    </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
